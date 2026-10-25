@@ -158,3 +158,38 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
 }
+
+export default async function decorate(block) {
+  // block = the table you authored in your doc
+  // we just add classes, we don't write text here
+  
+  block.classList.add('davana-header');
+
+  // Top bar is first row
+  const rows = [...block.children];
+  
+  rows.forEach((row) => {
+    row.classList.add('header-row');
+  });
+
+  // Add mobile toggle automatically (no text hardcoded)
+  const nav = block.querySelector('ul');
+  if (nav) {
+    nav.classList.add('nav-list');
+    const toggle = document.createElement('button');
+    toggle.className = 'mobile-toggle';
+    toggle.textContent = '☰';
+    toggle.setAttribute('aria-label', 'menu');
+    block.append(toggle);
+    
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  }
+
+  // Mark first li as active if no active
+  const firstLi = block.querySelector('li');
+  if (firstLi && !block.querySelector('li.active')) {
+    firstLi.classList.add('active');
+  }
+}
