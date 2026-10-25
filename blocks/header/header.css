@@ -271,3 +271,26 @@ header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/* blocks/header/header.css */
+.header.block { max-width: none; padding: 0; }
+.davana-header { width: 100%; }
+
+/* You can style whatever structure comes from doc */
+.davana-header .header-row { display: flex; justify-content: space-between; padding: 10px 20px; }
+
+.davana-header ul { list-style: none; display: flex; margin: 0; padding: 0; gap: 10px; }
+.davana-header ul li a { text-decoration: none; padding: 18px 16px; display: block; }
+
+/* Yellow nav bar is just a class, color can be changed in doc via section metadata */
+.davana-header .nav-list { background: #f7b500; }
+.davana-header .nav-list li.active { background: #222; }
+.davana-header .nav-list li.active a { color: #fff; }
+
+/* Mobile */
+.mobile-toggle { display: none; }
+@media (max-width: 900px) {
+  .davana-header ul { display: none; flex-direction: column; }
+  .davana-header ul.open { display: flex; }
+  .mobile-toggle { display: block; }
+}
